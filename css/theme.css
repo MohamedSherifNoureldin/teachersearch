@@ -1,0 +1,59 @@
+* {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+body .navbar {
+  background-color: white;
+}
+
+.holder {
+  background-color: white;
+  margin-top: 25px;
+  padding: 10px;
+}
+
+.holder input {
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.holder button {
+  background-color: #ffd935;
+  border: solid;
+  border-color: #ffd935;
+  border-width: 1px;
+  border-radius: 15px;
+  color: white;
+  padding: 15px;
+}
+
+.holder button:hover {
+  background-color: white;
+  color: #ffd935;
+  cursor: pointer;
+}
+
+.holder #name {
+  width: 92%;
+}
+
+.holder .media h4 {
+  color: #ffd935;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.holder .media p {
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+
+.holder .media .fa {
+  min-width: 15px;
+}
