@@ -48,40 +48,44 @@ if(!empty($_GET['query'])){
             
             <!-- Results -->
             <?php
-                // Check that the query is not empty and is not less than 2 character
-                if (!empty($query) && strlen($query)>=2 ) {
-                    // Select from the databse by name or subject
-                    $search_select = "SELECT * FROM teachers WHERE name LIKE '%$query%' OR subject LIKE '%$query%' ORDER BY name";
-                    $searchresult = mysqli_query($dbconfig,$search_select);
-                    // Check that the results are not empty
-                    if(mysqli_num_rows($searchresult) == 0){
-                        echo "Sorry ! Nothing was found";
-                    } else {
-                        // Show each and every result in this style
-                        while($teacher = mysqli_fetch_assoc($searchresult)) {
+                if(!empty($_GET)){
+                    // Check that the query is not empty and is not less than 2 character
+                    if (!empty($query) && strlen($query)>=2 ) {
+                        // Select from the databse by name or subject
+                        $search_select = "SELECT * FROM teachers WHERE name LIKE '%$query%' OR subject LIKE '%$query%' or other_names LIKE '%$query%' ORDER BY name";
+                        $searchresult = mysqli_query($dbconfig,$search_select);
+                        // Check that the results are not empty
+                        if(mysqli_num_rows($searchresult) == 0){
+                            echo "Sorry ! Nothing was found";
+                        } else {
+                            // Show each and every result in this style
+                            while($teacher = mysqli_fetch_assoc($searchresult)) {
             ?>
-                            <div class="media text-left mt-3">
-                                <!-- Teacher's Image -->
-                                <img class="d-flex align-self-center mr-3 img-thumbnail" src="https://via.placeholder.com/100x100/ffd935/ffffff?text=<?php echo $teacher['name'][0]; ?>" alt="Generic placeholder image" width="110px" height="110px">
-                                <div class="media-body">
-                                    <!-- Teacher's Name -->
-                                    <h4><?php echo $teacher['name'] ?></h4>
-                                    <!-- Teacher's Center -->
-                                    <p class="float-left"><i class="fa fa-home" aria-hidden="true"></i> <?php echo $teacher['center'] ?></p>
-                                    <!-- Teacher's Location -->
-                                    <p class="float-right pr-3"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $teacher['location'] ?></p>
-                                    <!-- Teacher's Subject -->
-                                    <p style="clear: both"><i class="fa fa-pencil" aria-hidden="true"></i> <?php echo $teacher['subject'] ?></p>
-                                    <!-- Teacher's Phone Number -->
-                                    <p><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $teacher['phone'] ?></p>
+                                <div class="media text-left mt-3">
+                                    <!-- Teacher's Image -->
+                                    <img class="d-flex align-self-center mr-3 img-thumbnail" src="https://via.placeholder.com/100x100/ffd935/ffffff?text=<?php echo $teacher['name'][0]; ?>" alt="Generic placeholder image" width="110px" height="110px">
+                                    <div class="media-body">
+                                        <!-- Teacher's Name -->
+                                        <h4><?php echo $teacher['name'] ?></h4>
+                                        <!-- Teacher's Center -->
+                                        <p class="float-left"><i class="fa fa-home" aria-hidden="true"></i> <?php echo $teacher['center'] ?></p>
+                                        <!-- Teacher's Location -->
+                                        <p class="float-right pr-3"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $teacher['location'] ?></p>
+                                        <!-- Teacher's Subject -->
+                                        <p style="clear: both"><i class="fa fa-pencil" aria-hidden="true"></i> <?php echo $teacher['subject'] ?></p>
+                                        <!-- Teacher's Phone Number -->
+                                        <p><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $teacher['phone'] ?></p>
+                                    </div>
                                 </div>
-                            </div>
             <?php 
+                        }
                     }
+                } else {
+                    // Not enough letters were entered
+                    echo "Sorry ! Nothing was found. Try entering more letters.";
                 }
             } else {
-                // Not enough letters were entered
-                echo "Sorry ! Nothing was found. Try entering more letters.";
+                echo "Please enter a the name of your teacher or the subject.";
             }
             ?>
 
