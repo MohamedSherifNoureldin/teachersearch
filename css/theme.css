@@ -60,7 +60,7 @@ body .navbar {
   font-weight: 700;
 }
 
-.holder .media h4 {
+.holder .media h4, .holder .media a {
   color: #ffd935;
   font-weight: 700;
   text-transform: capitalize;

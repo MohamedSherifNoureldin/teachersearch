@@ -60,13 +60,36 @@ if(!empty($_GET['query'])){
                         } else {
                             // Show each and every result in this style
                             while($teacher = mysqli_fetch_assoc($searchresult)) {
+                                $teacher_id = $teacher['id'];
+                                $ratingresult = mysqli_query($dbconfig,"SELECT AVG(rating) AS avgrating FROM reviews WHERE teacher_id = '$teacher_id'");
+                                $avgrating = mysqli_fetch_assoc($ratingresult);
+                                $avgrating = $avgrating['avgrating'];
             ?>
                                 <div class="media text-left mt-3">
                                     <!-- Teacher's Image -->
                                     <img class="d-flex align-self-center mr-3 img-thumbnail" src="https://via.placeholder.com/100x100/ffd935/ffffff?text=<?php echo $teacher['name'][0]; ?>" alt="Generic placeholder image" width="110px" height="110px">
                                     <div class="media-body">
-                                        <!-- Teacher's Name -->
-                                        <h4><?php echo $teacher['name'] ?></h4>
+                                        <div class="row">
+                                            <!-- Teacher's Name -->
+                                            <h4 class="col"><a href="//localhost/ig/reviews/<?php echo $teacher['username']; ?>"><?php echo $teacher['name'] ?></a></h4>
+                                            <!-- Teacher's Rating -->
+                                            <p class="col-0">
+                                            <?php
+                                            for ($i=$avgrating;$i <= 5 && $i >= 1; $i--) {
+                                            ?>                                                 
+                                            <i class="fa fa-star fa-2" aria-hidden="true"></i>
+                                            <?php
+                                            }
+                                            // Get remaing stars
+                                            $empty_stars = 5 - $avgrating;
+                                            for ($i=$empty_stars;$i <= 5 && $i >= 0; $i--) {
+                                            ?>
+                                            <i class="fa fa-star-o fa-2" aria-hidden="true"></i>
+                                            <?php
+                                            }
+                                            ?>
+                                            </p>
+                                        </div>
                                         <!-- Teacher's Center -->
                                         <p class="float-left"><i class="fa fa-home" aria-hidden="true"></i> <?php echo $teacher['center'] ?></p>
                                         <!-- Teacher's Location -->
