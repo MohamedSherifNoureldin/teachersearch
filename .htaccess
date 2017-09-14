@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^reviews/([A-Za-z0-9-]+)/?$ reviews.php?teacher=$1 [NC,L]
