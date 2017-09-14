@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 RewriteEngine On
 RewriteRule ^reviews/([A-Za-z0-9-]+)/?$ reviews.php?teacher=$1 [NC,L]
+=======
+RewriteEngine On
+RewriteRule ^reviews/([A-Za-z0-9-]+)/?$ reviews.php?teacher=$1 [NC,L]
+>>>>>>> 44447cf4fa16e6b395880924828639eed50cb2b4
