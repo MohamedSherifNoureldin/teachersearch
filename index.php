@@ -82,7 +82,7 @@ if(!empty($_GET['query'])){
                                             }
                                             // Get remaing stars
                                             $empty_stars = 5 - $avgrating;
-                                            for ($i=$empty_stars;$i <= 5 && $i >= 0; $i--) {
+                                            for ($i=$empty_stars;$i <= 5 && $i > 0; $i--) {
                                             ?>
                                             <i class="fa fa-star-o fa-2" aria-hidden="true"></i>
                                             <?php

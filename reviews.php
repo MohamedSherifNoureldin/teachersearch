@@ -76,7 +76,7 @@ if(mysqli_num_rows($teacheresult) == 0){
                 
                 // Get remaing stars
                 $empty_stars = 5 - $avgrating;
-                for ($i=$empty_stars;$i <= 5 && $i >= 0; $i--) {
+                for ($i=$empty_stars;$i <= 5 && $i > 0; $i--) {
                 ?>
                     <i class="fa fa-star-o fa-2" aria-hidden="true"></i>
                 <?php
@@ -112,7 +112,7 @@ if(mysqli_num_rows($teacheresult) == 0){
                         <?php 
                         } 
                         $empty_stars = 5 - $review['rating'];
-                        for ($i=$empty_stars;$i <= 5 && $i >= 1; $i--) {
+                        for ($i=$empty_stars;$i <= 5 && $i > 0; $i--) {
                         ?>
                             <i class="fa fa-star-o fa-2 d-flex align-self-center" aria-hidden="true"></i>
                         <?php
